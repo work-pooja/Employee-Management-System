@@ -1,0 +1,100 @@
+<div class="min-h-screen flex items-center justify-center bg-slate-100 px-4 py-8">
+    <div class="w-full max-w-xl rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200">
+        @if(!isEdit){
+        <h3 class="mb-6 text-center text-3xl font-semibold text-slate-800">Add Employee</h3>
+
+        }
+        @else{
+        <h3 class="mb-6 text-center text-3xl font-semibold text-slate-800">Edit Employee</h3>
+
+        }
+
+        <form (submit)="submit()" class="space-y-4">
+            <div class="grid grid-cols-[100px_1fr] items-center gap-3">
+                <label class="text-sm font-medium text-slate-700">Name</label>
+                <div class="col-span-1">
+                    <input type="text" [formField]="userForm.name"
+                        class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200" />
+                    @if (userForm.name().touched() && userForm.name().invalid()) {
+                        <p class="mt-1 w-full text-xs font-medium text-red-600">
+                            {{ userForm.name().errors()[0].message }}
+                        </p>
+                    }
+                </div>
+            </div>
+
+            <div class="grid grid-cols-[100px_1fr] items-center gap-3">
+                <label class="text-sm font-medium text-slate-700">Id</label>
+                <div class="col-span-1">
+                    <input type="number" [formField]="userForm.id"
+                        class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200" />
+                    @if (userForm.id().touched() && userForm.id().invalid()) {
+                        <p class="mt-1 w-full text-xs font-medium text-red-600">
+                            {{ userForm.id().errors()[0].message }}
+                        </p>
+                    }
+                </div>
+            </div>
+
+            <div class="grid grid-cols-[100px_1fr] items-center gap-3">
+                <label class="text-sm font-medium text-slate-700">Role</label>
+                <div class="col-span-1">
+                    <input type="text" [formField]="userForm.role"
+                        class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200" />
+                    @if (userForm.role().touched() && userForm.role().invalid()) {
+                        <p class="mt-1 w-full text-xs font-medium text-red-600">
+                            {{ userForm.role().errors()[0].message }}
+                        </p>
+                    }
+                </div>
+            </div>
+
+            <div class="grid grid-cols-[100px_1fr] items-center gap-3">
+                <label class="text-sm font-medium text-slate-700">Age</label>
+                <div class="col-span-1">
+                    <input type="number" [formField]="userForm.age"
+                        class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200" />
+                    @if (userForm.age().touched() && userForm.age().invalid()) {
+                        <p class="mt-1 w-full text-xs font-medium text-red-600">
+                            {{ userForm.age().errors()[0].message }}
+                        </p>
+                    }
+                </div>
+            </div>
+
+            <div class="grid grid-cols-[100px_1fr] items-center gap-3">
+                <label class="text-sm font-medium text-slate-700">Projects</label>
+                <div class="col-span-1">
+                    <select [formField]="userForm.projects"
+                        class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                        <option value="">Select Project ---</option>
+                        <option value="Frontend">Frontend</option>
+                        <option value="Backend">Backend</option>
+                        <option value="Design">Design</option>
+                    </select>
+                    @if (userForm.projects().touched() && userForm.projects().invalid()) {
+                        <p class="mt-1 w-full text-xs font-medium text-red-600">
+                            {{ userForm.projects().errors()[0].message }}
+                        </p>
+                    }
+                </div>
+            </div>
+
+            @if (!isEdit) {
+                <div class="pt-2 text-center">
+                    <button type="submit"
+                        class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        Save
+                    </button>
+                </div>
+            } @else {
+                <div class="pt-2 text-center">
+                    <button type="submit"
+                        class="rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:ring-blue-300">
+                        Update
+                    </button>
+                </div>
+            }
+        </form>
+    </div>
+</div>
